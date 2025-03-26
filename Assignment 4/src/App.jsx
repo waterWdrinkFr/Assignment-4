@@ -6,7 +6,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="calculators">
+    <div class="calculators">
       <Heron />
       <Ambig />
     </div>
