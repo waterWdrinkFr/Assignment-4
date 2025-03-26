@@ -8,31 +8,25 @@ function Ambig() {
 
     function triangleType(event) {
         event.preventDefault();
-        console.log("Form submitted");
         const angle = parseFloat(angleA);
         const a = parseFloat(sideA);
         const b = parseFloat(sideB);
         const h = (b * Math.sin(angle * Math.PI / 180)).toFixed(2);
-        console.log(`angle: ${angle}, a: ${a}, b: ${b}, h: ${h}`);
     
         if (angle > 0 && angle <= 90) {
             if (h < a && a < b) {
                 setType("two triangles (ambiguous case)");
-            }  
-            else if (a == h) {
+            } else if (a == h) {
                 setType("right triangle");
-            }
-            else if (a < h) {
+            } else if (a < h) {
                 setType("no triangle");
-            }
-            else if (a >= b) {
+            } else if (a >= b) {
                 setType("one triangle");
             } 
         } else if (angle < 180 && angle > 90){
             if (a < b || a == b) {
                 setType("no triangle");
-            }
-            else if (a > b) {
+            } else if (a > b) {
                 setType("one triangle");
             }
         } else{
@@ -45,9 +39,9 @@ function Ambig() {
         <div className="ambig">
             <h1>Ambiguous Case</h1>
             <form id="ambig" onSubmit={triangleType}>
-                <input type="number" id="angleA" value={angleA} onChange={(event) => setAngle(event.target.value)} placeholder="Angle A" required />
-                <input type="number" id="sideA" value={sideA} onChange={(event) => setA(event.target.value)} placeholder="Side A" required />
-                <input type="number" id="sideB" value={sideB} onChange={(event) => setB(event.target.value)} placeholder="Side B" required />
+                <input type="double" id="angleA" value={angleA} onChange={(event) => setAngle(event.target.value)} placeholder="Angle A" required />
+                <input type="double" id="sideA" value={sideA} onChange={(event) => setA(event.target.value)} placeholder="Side A" required />
+                <input type="double" id="sideB" value={sideB} onChange={(event) => setB(event.target.value)} placeholder="Side B" required />
                 <button type="submit">Submit</button>
             </form>
             <input type="text" value={type} readOnly placeholder="Triangle Type" />
