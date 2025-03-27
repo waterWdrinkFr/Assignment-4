@@ -1,57 +1,56 @@
 import { useState } from "react";
 
 function Poly() {
-    const [coeff, coefficients] = useState("");
-    const [exp, exponents] = useState("");
-    const [x, xValue] = useState("");
-    const [y, yValue] = useState("");
-    const [func, poly] = useState("");
+    const [coeff, setCoeff] = useState("");
+    const [exp, setExp] = useState("");
+    const [xValue, setX] = useState("");
+    const [yValue, setY] = useState("");
+    const [func, setFunc] = useState("");
 
     function getFunction(event) {
         event.preventDefault();
         const c = coeff.split(" ");
         const e = exp.split(" ");
-        const x = parseFloat(x);
-        let func = "";
-        let y = 0;
+        const x = parseFloat(xValue);
+        let poly = "";
 
         if (c.length != e.length) {
             document.getElementById("eval").value = "Error: Invalid Input";
         } else {
             let y = 0;
-            for (let i = 0; i < coeff.length; i++) {
-                y += parseFloat(coeff[i])*Math.pow(x, parseFloat(exp[i]));
-                if (i < coeff.length-1) {
-                    if (parseFloat(exp[i]) != 0){
-                        func += `${coeff[i]}x^${exp[i]}+`;
+            for (let i = 0; i < c.length; i++) {
+                y += parseFloat(c[i]) * Math.pow(x, parseFloat(e[i]));
+                if (i < c.length - 1) {
+                    if (parseFloat(e[i]) != 0) {
+                        poly += `${c[i]}x^${e[i]}+`;
                     } else {
-                        func += `${coeff[i]}+`;
+                        poly += `${c[i]}+`;
                     }
                 } else {
-                    if (parseFloat(exp[i]) != 0){
-                        func += `${coeff[i]}x^${exp[i]}`;
+                    if (parseFloat(e[i]) != 0) {
+                        poly += `${c[i]}x^${e[i]}`;
                     } else {
-                        func += `${coeff[i]}`;
+                        poly += `${c[i]}`;
                     }
                 }
             }
-            yValue(`f(x) = ${func}`);
-            poly(`f(${x}) = ${y}`);
+            setFunc(`f(x) = ${poly}`);
+            setY(`f(${x}) = ${y}`);
         }
     }
 
     return (
         <div className="poly">
-        <h1>Polynomial Function</h1>
-        <form id="poly" onSubmit={getFunction}>
-            <input type="double" id="coeff" value={coeff} onChange={(event) => coefficients(event.target.value)} placeholder="Angle A" required />
-            <input type="double" id="exp" value={exp} onChange={(event) => exponents(event.target.value)} placeholder="Side A" required />
-            <input type="double" id="x" value={x} onChange={(event) => xValue(event.target.value)} placeholder="Side B" required />
-            <button type="submit">Submit</button>
-        </form>
-        <input type="text" value={y} readOnly placeholder="Function" />
-        <input type="text" value={func} readOnly placeholder="Polynomial Evaluation" />
-    </div>
+            <h1>Polynomial Function</h1>
+            <form id="poly" onSubmit={getFunction}>
+                <input type="double" id="coeff" value={coeff} onChange={(event) => setCoeff(event.target.value)} placeholder="Coefficients" required />
+                <input type="double" id="exp" value={exp} onChange={(event) => setExp(event.target.value)} placeholder="Exponents" required />
+                <input type="double" id="x" value={xValue} onChange={(event) => setX(event.target.value)} placeholder="x value" required />
+                <button type="submit">Submit</button>
+            </form>
+            <input type="text" value={func} readOnly placeholder="Function" />
+            <input type="text" value={yValue} readOnly placeholder="Polynomial Evaluation" />
+        </div>
     );
 }
 
