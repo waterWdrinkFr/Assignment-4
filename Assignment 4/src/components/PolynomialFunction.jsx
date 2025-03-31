@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './PolynomialFunction.css';
 
 function Poly() {
     const [coeff, setCoeff] = useState("");
