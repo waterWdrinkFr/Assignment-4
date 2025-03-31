@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function Newton() {
-    let [x, guess] = useState("");
+    let [x, setGuess] = useState("");
     let [root, setRoot] = useState("");
     
     function getRoot(event) {
@@ -26,7 +26,7 @@ function Newton() {
         <div className="newton">
             <h1>Newton's Method</h1>
             <form id="newton" onSubmit={getRoot}>
-                <input type="double" id="x" value={x} onChange={(event) => guess(event.target.value)} placeholder="Initial Guess" required />
+                <input type="double" id="x" value={x} onChange={(event) => setGuess(event.target.value)} placeholder="Initial Guess" required />
                 <button type="submit">Submit</button>
             </form>
             <input type="text" value={root} readOnly placeholder="Approximated Root" />

@@ -32,7 +32,6 @@ function Ambig() {
         } else{
             setType("Error: Angle must be between 0 and 180");
         }
-        console.log(`Triangle type: ${type}`);
     }
 
     return (
