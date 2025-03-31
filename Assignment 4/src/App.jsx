@@ -1,8 +1,8 @@
 import './App.css'
-import Heron from './components/heron.jsx';
-import Ambig from './components/ambig.jsx';
-import Newton from './components/newton.jsx';
-import Poly from './components/poly.jsx';
+import Heron from './components/HeronsFormula.jsx';
+import Ambig from './components/AmbiguousCase.jsx';
+import Newton from './components/NewtonsMethod.jsx';
+import Poly from './components/PolynomialFunction.jsx';
 
 function App() {
   return (
