@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './AmbiguousCase.css'
 
 function Ambig() {
     const [angleA, setAngle] = useState("");

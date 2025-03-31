@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './HeronsFormula.css';
 
 function Heron() {
     const [sideA, setA] = useState("");
