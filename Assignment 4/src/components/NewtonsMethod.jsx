@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './NewtonsMethod.css';
 
 function Newton() {
     let [x, setGuess] = useState("");
